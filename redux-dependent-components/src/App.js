@@ -3,6 +3,7 @@ import * as Redux from "redux";
 import reduxThunk from "redux-thunk";
 import { Provider } from "react-redux";
 import reducer from "./reducers/reducer";
+import { Input } from "./components/Input";
 
 const createStoreWithMiddleware = Redux.applyMiddleware(reduxThunk)(
   Redux.createStore
@@ -16,7 +17,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <p>Hello Redux</p>
+        <Input />
       </Provider>
     );
   }
