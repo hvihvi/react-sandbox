@@ -5,3 +5,11 @@ export const updateTeam = team => {
     newTeam: team
   };
 };
+
+export const UPDATE_TYPE = "UPDATE_TYPE";
+export const updateType = type => {
+  return {
+    type: UPDATE_TYPE,
+    newType: type
+  };
+};
