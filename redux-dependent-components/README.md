@@ -1,3 +1,22 @@
+## REDUX DEPENDENT COMPONENTS
+
+The goal of this project is to showcase a simple use-case where component depend on the value of one or multiple other components.  
+
+This app is a simple TODO App similar to the redux example TODO App, that displays a list of TODOs.  
+
+A TODO item contains 3 fields : `team`, `type`, `project`.  
+
+We have to filter our list of TODOs by `team`, `type` and `project` via 3 drop-down lists:
+
+- the `team` drop-down list should only contain values available in the TODO list
+- the `type` drop-down list should only contain values available in the TODO list matching the selected `team`
+- the `project` drop-down list should only contain values available in the TODO list matching the selected `team` and `type`
+
+
+
+
+## CREATE REACT APP README INSTRUCTIONS BELOW
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
