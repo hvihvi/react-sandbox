@@ -13,3 +13,11 @@ export const updateType = type => {
     newType: type
   };
 };
+
+export const UPDATE_PROJECT = "UPDATE_PROJECT";
+export const updateProject = project => {
+  return {
+    type: UPDATE_PROJECT,
+    newProject: project
+  };
+};
