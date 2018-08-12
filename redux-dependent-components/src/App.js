@@ -4,6 +4,7 @@ import reduxThunk from "redux-thunk";
 import { Provider } from "react-redux";
 import reducer from "./reducers/reducer";
 import SelectTeam from "./containers/SelectTeam";
+import VisibleTodoList from "./containers/VisibleTodoList";
 
 const createStoreWithMiddleware = Redux.applyMiddleware(reduxThunk)(
   Redux.createStore
@@ -17,7 +18,11 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <SelectTeam />
+        <div>
+          <SelectTeam />
+          <hr />
+          <VisibleTodoList />
+        </div>
       </Provider>
     );
   }
