@@ -1,5 +1,5 @@
 import initialState from "./initialState";
-import {UPDATE_PROJECT, UPDATE_TEAM, UPDATE_TYPE} from '../actions/action'
+import { UPDATE_PROJECT, UPDATE_TEAM, UPDATE_TYPE } from "../actions/action";
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
