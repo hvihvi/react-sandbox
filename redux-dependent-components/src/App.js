@@ -3,10 +3,7 @@ import * as Redux from "redux";
 import reduxThunk from "redux-thunk";
 import { Provider } from "react-redux";
 import reducer from "./reducers/reducer";
-import SelectTeam from "./containers/SelectTeam";
-import VisibleTodoList from "./containers/VisibleTodoList";
-import SelectType from "./containers/SelectType";
-import SelectProject from "./containers/SelectProject";
+import AppLayout from "./containers/AppLayout";
 
 const createStoreWithMiddleware = Redux.applyMiddleware(reduxThunk)(
   Redux.createStore
@@ -20,13 +17,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div>
-          <SelectTeam />
-          <SelectType />
-          <SelectProject />
-          <hr />
-          <VisibleTodoList />
-        </div>
+        <AppLayout />
       </Provider>
     );
   }
