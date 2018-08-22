@@ -1,11 +1,11 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Input } from "../components/Input";
+import { Select } from "../components/Select";
 import { removeDuplicates } from "./utils";
 import { updateType } from "../actions/action";
 
 const SelectType = ({ todos, team, type, updateType }) => (
-  <Input
+  <Select
     value={type}
     values={filterPossibleTypes(todos, team)}
     updateValue={updateType}

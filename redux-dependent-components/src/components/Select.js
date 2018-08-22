@@ -1,6 +1,6 @@
 import React from "react";
 
-export class Input extends React.Component {
+export class Select extends React.Component {
   componentDidMount() {
     this.resetValueIfNotAvailable();
   }
