@@ -10,7 +10,7 @@ export class Select extends React.Component {
 
   resetValueIfNotAvailable() {
     const { value, values, updateValue } = this.props;
-    if (!values.includes(value)) {
+    if (!values.includes(value) && values.length > 0) {
       updateValue(values[0]);
     }
   }
