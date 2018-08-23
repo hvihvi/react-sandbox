@@ -6,6 +6,7 @@ const mapStateToProps = state => {
     todos: state.reducer.todos
       .filter(todo => state.reducer.team === todo.team)
       .filter(todo => state.reducer.type === todo.type)
+      .filter(todo => state.reducer.project === todo.project)
   };
 };
 

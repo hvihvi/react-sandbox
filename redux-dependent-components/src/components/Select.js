@@ -16,9 +16,9 @@ export class Select extends React.Component {
   }
 
   render() {
-    const { values, updateValue } = this.props;
+    const { value, values, updateValue } = this.props;
     return (
-      <select onChange={event => updateValue(event.target.value)}>
+      <select value={value} onChange={event => updateValue(event.target.value)}>
         {values.map(value => (
           <option value={value} key={value}>
             {value}
