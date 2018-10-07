@@ -1,3 +1,4 @@
+// import React for JSX => <App/> <=> React.createElement(App)
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
