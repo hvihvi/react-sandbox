@@ -19,9 +19,9 @@ export class Select extends React.Component {
     const { value, values, updateValue } = this.props;
     return (
       <select value={value} onChange={event => updateValue(event.target.value)}>
-        {values.map(value => (
-          <option value={value} key={value}>
-            {value}
+        {values.map(v => (
+          <option value={v} key={v}>
+            {v}
           </option>
         ))}
       </select>
