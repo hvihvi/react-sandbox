@@ -14,7 +14,7 @@ export const AppLogo = styled(Logo)`
       transform: rotate(0deg);
     }
     to {
-      transform: rotate(360deg);
+      transform: rotate(${props => (props.clockwise ? "360deg" : "-360deg")});
     }
   }
 `;
