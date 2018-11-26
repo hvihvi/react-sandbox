@@ -6,7 +6,7 @@ const Container = styled.div`
 `;
 
 const Header = styled.header`
-  background-color: #282c34;
+  background-color: ${props => props.theme.backgroundColor};
   min-height: 100vh;
   display: flex;
   flex-direction: column;
