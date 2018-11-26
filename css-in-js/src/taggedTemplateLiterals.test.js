@@ -10,3 +10,17 @@ it("should pass tagged template to function", () => {
   // then
   expect(result).toEqual("Hello World !!! My name is hvi");
 });
+
+it("should pass tagged template to curried function", () => {
+  // given
+  const exempleFunction = name => (strings, ...keys) =>
+    "Hello " + strings[0] + keys[0] + " My name is " + name;
+  const exclamationMarks = "!!!";
+  const name = "hvi";
+
+  // when
+  const result = exempleFunction(name)`World ${exclamationMarks}`;
+
+  // then
+  expect(result).toEqual("Hello World !!! My name is hvi");
+});
