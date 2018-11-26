@@ -3,12 +3,23 @@ import "./App.css";
 import { AppLogo } from "./AppLogo";
 import { AppContainer } from "./AppContainer";
 import { ThemeProvider } from "styled-components";
+import { BrowserRouter, Route } from "react-router-dom";
+import ComponentContainer from "./ComponentContainer";
 
 const theme = {
   backgroundColor: "#282c34"
 };
 
 const App = () => (
+  <BrowserRouter>
+    <>
+      <Route exact path="/" component={CRA} />
+      <Route exact path="/components" component={ComponentContainer} />
+    </>
+  </BrowserRouter>
+);
+
+const CRA = () => (
   <ThemeProvider theme={theme}>
     <AppContainer>
       <AppLogo clockwise={false} />
