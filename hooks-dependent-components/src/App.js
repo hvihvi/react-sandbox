@@ -1,28 +1,37 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
+import React, { useReducer } from "react";
 import "./App.css";
+import SelectAge from "./containers/SelectAge";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+const App = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  return (
+    <div>
+      <SelectAge
+        age={state.age}
+        setAge={value => dispatch(setAgeAction(value))}
+      />
+    </div>
+  );
+};
+
+const setAgeAction = age => {
+  return {
+    type: "SET_AGE",
+    age
+  };
+};
+
+const initialState = {
+  age: 20
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "SET_AGE":
+      return { ...state, age: action.age };
+    default:
+      return state;
   }
-}
+};
 
 export default App;
