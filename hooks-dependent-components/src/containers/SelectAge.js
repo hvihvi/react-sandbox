@@ -3,7 +3,7 @@ import { Select } from "../components/Select";
 import { useField } from "../ctx/FieldContext";
 
 const SelectAge = () => {
-  const [age, setAge] = useField("age");
+  const [age, setAge] = useField("AGE");
   return (
     <Select value={age} values={[...Array(100).keys()]} setValue={setAge} />
   );

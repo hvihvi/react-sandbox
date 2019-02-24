@@ -8,7 +8,7 @@ To showcase dependencies between field, this example will implement 4 questions 
 
 - AGE: "How old are you?" => Select between 0 and 99
 
-- LICENCE_AGE: "How many years have you had your driver's license?" => Select between 0 and (AGE - 16)
+- LICENSE_AGE: "How many years have you had your driver's license?" => Select between 0 and (AGE - 16)
 
 - CAR_AGE: "How many years have you drove your last car?" => Select between 0 and LICENCE_AGE
 
