@@ -1,24 +1,19 @@
-import React, { useReducer } from "react";
-import "./App.css";
+import React, { useReducer, useContext } from "react";
 import SelectAge from "./containers/SelectAge";
 
+export const FieldContext = React.createContext();
+
 const App = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <div>
-      <SelectAge
-        age={state.age}
-        setAge={value => dispatch(setAgeAction(value))}
-      />
-    </div>
+    <FieldContext.Provider value={useReducer(reducer, initialState)}>
+      <SelectAge />
+    </FieldContext.Provider>
   );
 };
 
-const setAgeAction = age => {
-  return {
-    type: "SET_AGE",
-    age
-  };
+export const useField = fieldId => {
+  const [state, dispatch] = useContext(FieldContext);
+  return [state[fieldId], value => dispatch({ type: fieldId, value })];
 };
 
 const initialState = {
@@ -26,12 +21,8 @@ const initialState = {
 };
 
 const reducer = (state, action) => {
-  switch (action.type) {
-    case "SET_AGE":
-      return { ...state, age: action.age };
-    default:
-      return state;
-  }
+  console.log(action);
+  return { ...state, [action.type]: action.value };
 };
 
 export default App;
