@@ -2,6 +2,10 @@
 
 The goal of this showcase is to architecture a form with hooks.
 
+It reproduces a redux listener pattern without redux.
+Context API is used to hold the store, it contains a useReducer hook's value.
+It allows other nested components to reduce it with a useContext hook retrieving the state and dispatch function.
+
 Each question of the form should set a value called a "field".
 
 To showcase dependencies between field, this example will implement 4 questions :

@@ -3,6 +3,7 @@ import SelectAge from "./containers/SelectAge";
 import SelectLicenseAge from "./containers/SelectLicenseAge";
 import FieldContext from "./ctx/FieldContext";
 import SelectCarAge from "./containers/SelectCarAge";
+import SelectInsuranceAge from "./containers/SelectInsuranceAge";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <div>How many years have you drove your last car?</div>
       <SelectCarAge />
       <div>How many years have you had a car insurance?</div>
+      <SelectInsuranceAge />
     </FieldContext>
   );
 };
