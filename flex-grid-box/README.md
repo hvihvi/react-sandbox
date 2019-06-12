@@ -1,68 +1,90 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Flexbox & Layouts
 
-## Available Scripts
+Wrap with a Container, containing Items.
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## FlexContainer
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+`display: flex`: Le keyword pour faire profiter de flex et des propriétés flex. S'applique uniquement aux childrens directs.
+`flex-direction` : row (->), reverse-row (<-), column (v), reverse-column (Î)
+`justify-content`: s'applique sur l'axe principal (row par défaut). `center` en général. `space-around` permet de distribuer les éléments avec un espace entre chaque, `space-between` fait pareil sans les marges sur les extremités.
+`align-items`: pareil que justify-content mais verticalement. `center` en général.
+`flex-wrap`: `wrap` permet de mettre les éléments à la ligne automatiquement quand on dépace la taille max d'une ligne (à préciser, en `no-wrap` par défaut).
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Item
 
-### `npm run build`
+`order`: change l'ordre des items. Eviter si possible, plus facile à manipuler/tester en JS/React plutôt qu'en CSS.
+`align-self`: permet de changer le positionnement d'un item en particulier.
+`flex-grow`: 0 par défaut. Distribue l'espace restant proportionnellement aux flex-grow assignés.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Layouts
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Un composant qui vient accueillir d'autres composants et a pour unique responsabilité de les disposer, sans se soucier des composant qu'on lui passe.
+C'est ici qu'on utilisera principalement les CSS flex.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Pattern avec injection
 
-### `npm run eject`
+Pour les cas complexes, on peut injecter les composants en props
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+exemple:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+usage:
+```jsx
+<Layout
+       header={<Header/>}
+       body={<Body/>}
+/>
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+implem:
+```jsx
+const Layout = ({header, body}) =>
+<div>
+  <div>
+    {header}
+  </div>
+  <Separator/>
+  <div>
+    {body}
+  </div>
+</div>
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Pattern avec Children
 
-## Learn More
+Pour des cas simples ce pattern est plus lisible et intuitif.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`props.children` est passé à tous les composants React, constitue l'élément enfant du composant.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+usage:
+```jsx
+<Layout>
+  <Item1/>
+  <Item2/>
+</Layout>
+```
 
-### Code Splitting
+implem:
+```jsx
+const Layout = ({children}) => <div>
+        {React.Children.map(children, (child, i) => {
+          // Example logic here... ignores first child
+          if (i < 1) return
+          return child
+        })}
+</div>
+```
+single children:
+```jsx
+const Layout = ({children}) => <div>{children}</div>
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+`React.Children.toArray(children)` permet de les convertir en array et donc de les manipuler.
 
-### Analyzing the Bundle Size
+## Note on CSS in React
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+React recommande de ne pas utiliser les propriétés d'héritage/cascade de CSS (sass/less), et de privilégier la composition de composants React.
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Par exemple, si on a une classe CSS qui correspond à un conteneur flex, plutôt que de réutiliser et étendre la classe, là wrapper dans un composant et n'exposer ce style qu'à ce composant. Et utiliser ce composant par composition pour réutiliser ce style.

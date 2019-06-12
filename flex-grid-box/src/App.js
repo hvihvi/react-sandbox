@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import LayoutWithChildren from "./LayoutWithChildren";
+import LayoutWithInject from "./LayoutWithInject";
+import Item from "./Item";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <LayoutWithInject
+      children1={<Item>Box1</Item>}
+      children2={<Item>Box2</Item>}
+      children3={<Item>Box3</Item>}
+      />
+    </>
   );
-}
+};
 
 export default App;
